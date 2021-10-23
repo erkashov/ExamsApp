@@ -25,7 +25,7 @@
             <TextBox x:Name="tbRight"></TextBox>
             <Button x:Name="addQues" Content="Добавить вопрос" Click="addQues_Click"></Button>
         </StackPanel>
-        <Button x:Name="start" Content="Начать экзамен" Click="start_Click" Visibility="Hidden"></Button>
+        <Button x:Name="start" Click="start_Click" Content="Начать экзамен" Visibility="Hidden"></Button>
         <Button x:Name="createExam" Content="Выйти" Click="createExam_Click"></Button>
         
     </StackPanel>

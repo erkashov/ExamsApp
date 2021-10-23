@@ -23,6 +23,7 @@ namespace ExamsApp
         public Exam cur_ex;
         public bool IsAdded = false;
         public bool IsStarted = false;
+
         public CreateExam(Exam ex)
         {
             InitializeComponent();
@@ -30,8 +31,11 @@ namespace ExamsApp
             if (ex.Name != null)
             {
                 Update();
+                start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
+                start.Visibility = Visibility.Visible;
                 tbName.Text = cur_ex.Name;
                 IsAdded = true;
+                IsStarted = ex.IsStarted;
             }
         }
 
@@ -48,6 +52,7 @@ namespace ExamsApp
             if (tbName.Text == "") MessageBox.Show("Введите название");
             else
             {
+                int a=0;
                 if (!IsAdded)
                 {
                     cur_ex.Name = tbName.Text;
@@ -61,9 +66,10 @@ namespace ExamsApp
                     MessageBox.Show("Заполните все обязательные поля");
                     return;
                 }
-                if (tbAns3.Text == "" && tbRight.Text == "3" || tbAns4.Text == "" && tbRight.Text == "4")
+                if (tbAns3.Text == "" && tbRight.Text == "3" || tbAns4.Text == "" && tbRight.Text == "4" || !int.TryParse(tbRight.Text, out a))
                 {
                     MessageBox.Show("Проверьте данные о правильном ответе");
+                    return;
                 }
                 ExamDBEntities.GetContext().Questions.Add(new Question()
                 {
@@ -89,11 +95,15 @@ namespace ExamsApp
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
-            ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).IsStarted = true;
+            IsStarted = !IsStarted;
+            ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).IsStarted = IsStarted;
+            ExamDBEntities.GetContext().SaveChanges();
+            start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
         }
 
         private void createExam_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
     }

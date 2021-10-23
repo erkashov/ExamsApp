@@ -24,7 +24,7 @@ namespace ExamsApp.Windows
         {
             InitializeComponent();
             cur_user = u;
-            lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList<Exam>();
+            lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList();
         }
 
         private void createExam_Click(object sender, RoutedEventArgs e)
@@ -37,7 +37,12 @@ namespace ExamsApp.Windows
         private void lbExams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CreateExam a = new CreateExam((Exam)lbExams.SelectedItem);
-            a.ShowDialog();
+            a.Show();
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList<Exam>();
         }
     }
 

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamsApp.Windows"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800" Activated="Window_Activated">
     <StackPanel>
-        <ListBox x:Name="lbExams" ItemsSource="{Binding DynamicProxies.Exam.Name}" SelectionChanged="lbExams_SelectionChanged"></ListBox>
+        <ListBox x:Name="lbExams" ItemsSource="{Binding Name}" SelectionChanged="lbExams_SelectionChanged"></ListBox>
         <Button x:Name="createExam" Content="Создать экзамен" Click="createExam_Click"></Button>
     </StackPanel>
 </Window>
