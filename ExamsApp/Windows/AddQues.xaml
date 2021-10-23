@@ -1,0 +1,24 @@
+﻿<Window x:Class="ExamsApp.Windows.AddQues"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamsApp.Windows"
+        mc:Ignorable="d"
+        Title="AddQues" Height="287.155" Width="423.343">
+    <StackPanel>
+        <TextBlock Text="Введите вопрос"></TextBlock>
+        <TextBox x:Name="tbQues"></TextBox>
+        <TextBlock Text="Первый вариант ответа:"></TextBlock>
+        <TextBox x:Name="tbAns1"></TextBox>
+        <TextBlock Text="Второй вариант ответа:"></TextBlock>
+        <TextBox x:Name="tbAns2"></TextBox>
+        <TextBlock Text="Третий вариант ответа (необязательно):"></TextBlock>
+        <TextBox x:Name="tbAns3"></TextBox>
+        <TextBlock Text="Четверый вариант ответа (необязательно):"></TextBlock>
+        <TextBox x:Name="tbAns4"></TextBox>
+        <TextBlock Text="Правильный ответ:"></TextBlock>
+        <TextBox x:Name="tbRight"></TextBox>
+        <Button x:Name="addQues" Content="Добавить вопрос" Click="addQues_Click"></Button>
+    </StackPanel>
+</Window>

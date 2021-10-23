@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
     <StackPanel>
-        <ListBox x:Name="lbExams" ItemsSource="{Binding Name}"></ListBox>
+        <ListBox x:Name="lbExams" ItemsSource="{Binding DynamicProxies.Exam.Name}" SelectionChanged="lbExams_SelectionChanged"></ListBox>
         <Button x:Name="createExam" Content="Создать экзамен" Click="createExam_Click"></Button>
     </StackPanel>
 </Window>

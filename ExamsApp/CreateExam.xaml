@@ -5,14 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamsApp"
         mc:Ignorable="d"
-        Title="CreateExam" Height="450" Width="800">
+        Title="CreateExam" Height="450" Width="417.127">
     <StackPanel>
         <TextBlock Text="Название"></TextBlock>
-        <TextBox x:Name="tbNAme" ></TextBox>
-        <ListBox x:Name="lbQues" ItemsSource="{Binding Wording}"></ListBox>
-        <Button x:Name="addQues" Content="Добавить вопрос" Click="addQues_Click"></Button>
-        <Button x:Name="start" Content="Начать экзамен" Click="start_Click"></Button>
-        
+        <TextBox x:Name="tbName" ></TextBox>
+        <ListBox x:Name="lbQues"  ItemsSource="{Binding Wording}"></ListBox>
+        <StackPanel >
+            <TextBlock Text="Введите вопрос"></TextBlock>
+            <TextBox x:Name="tbQues"></TextBox>
+            <TextBlock Text="Первый вариант ответа:"></TextBlock>
+            <TextBox x:Name="tbAns1"></TextBox>
+            <TextBlock Text="Второй вариант ответа:"></TextBlock>
+            <TextBox x:Name="tbAns2"></TextBox>
+            <TextBlock Text="Третий вариант ответа (необязательно):"></TextBlock>
+            <TextBox x:Name="tbAns3"></TextBox>
+            <TextBlock Text="Четверый вариант ответа (необязательно):"></TextBlock>
+            <TextBox x:Name="tbAns4"></TextBox>
+            <TextBlock Text="Правильный ответ:"></TextBlock>
+            <TextBox x:Name="tbRight"></TextBox>
+            <Button x:Name="addQues" Content="Добавить вопрос" Click="addQues_Click"></Button>
+        </StackPanel>
+        <Button x:Name="start" Content="Начать экзамен" Click="start_Click" Visibility="Hidden"></Button>
+        <Button x:Name="createExam" Content="Выйти" Click="createExam_Click"></Button>
         
     </StackPanel>
 </Window>

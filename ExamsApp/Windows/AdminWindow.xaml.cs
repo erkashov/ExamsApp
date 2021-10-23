@@ -24,11 +24,21 @@ namespace ExamsApp.Windows
         {
             InitializeComponent();
             cur_user = u;
+            lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList<Exam>();
         }
 
         private void createExam_Click(object sender, RoutedEventArgs e)
         {
+            Exam ex = new Exam() { IdUser = cur_user.Id, IsStarted = false };
+            CreateExam a = new CreateExam(ex);
+            a.ShowDialog();
+        }
 
+        private void lbExams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CreateExam a = new CreateExam((Exam)lbExams.SelectedItem);
+            a.ShowDialog();
         }
     }
+
 }
