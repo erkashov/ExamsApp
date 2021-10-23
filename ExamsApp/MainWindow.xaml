@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamsApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
+        Title="MainWindow" Height="450" Width="383.564">
+    <StackPanel Margin="50">
         <TextBox x:Name="login"></TextBox>
         <TextBox x:Name="password"></TextBox>
         <Button x:Name="btLogin" Content="Войти" Click="btLogin_Click"></Button>

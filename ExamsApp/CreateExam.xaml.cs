@@ -53,6 +53,17 @@ namespace ExamsApp
             else
             {
                 int a=0;
+                
+                if (tbQues.Text == "" || tbAns1.Text == "" || tbAns2.Text == "" || tbRight.Text == "")
+                {
+                    MessageBox.Show("Заполните все обязательные поля");
+                    return;
+                }
+                if (tbAns3.Text == "" && tbRight.Text == "3" || tbAns4.Text == "" && tbRight.Text == "4" || !int.TryParse(tbRight.Text, out a) || a<1 || a>4)
+                {
+                    MessageBox.Show("Проверьте данные о правильном ответе");
+                    return;
+                }
                 if (!IsAdded)
                 {
                     cur_ex.Name = tbName.Text;
@@ -60,16 +71,6 @@ namespace ExamsApp
                     ExamDBEntities.GetContext().SaveChanges();
                     IsAdded = true;
                     start.Visibility = Visibility.Visible;
-                }
-                if (tbQues.Text == "" || tbAns1.Text == "" || tbAns2.Text == "" || tbRight.Text == "")
-                {
-                    MessageBox.Show("Заполните все обязательные поля");
-                    return;
-                }
-                if (tbAns3.Text == "" && tbRight.Text == "3" || tbAns4.Text == "" && tbRight.Text == "4" || !int.TryParse(tbRight.Text, out a))
-                {
-                    MessageBox.Show("Проверьте данные о правильном ответе");
-                    return;
                 }
                 ExamDBEntities.GetContext().Questions.Add(new Question()
                 {
