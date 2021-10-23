@@ -9,7 +9,7 @@
     <StackPanel>
         <TextBlock Text="Название"></TextBlock>
         <TextBox x:Name="tbName" ></TextBox>
-        <ListBox x:Name="lbQues"  DisplayMemberPath="Wording"></ListBox>
+        <ListBox x:Name="lbQues"  DisplayMemberPath="Wording" KeyDown="lbQues_KeyDown"></ListBox>
         <StackPanel >
             <TextBlock Text="Введите вопрос"></TextBlock>
             <TextBox x:Name="tbQues"></TextBox>

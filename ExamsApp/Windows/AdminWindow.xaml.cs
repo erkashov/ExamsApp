@@ -24,6 +24,11 @@ namespace ExamsApp.Windows
         {
             InitializeComponent();
             cur_user = u;
+            Update();
+        }
+
+        public void Update()
+        {
             lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList();
         }
 
@@ -36,13 +41,33 @@ namespace ExamsApp.Windows
 
         private void lbExams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CreateExam a = new CreateExam((Exam)lbExams.SelectedItem);
-            a.Show();
+            if (lbExams.SelectedItem != null)
+            {
+                CreateExam a = new CreateExam((Exam)lbExams.SelectedItem);
+                a.Show();
+            }
+            
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
             lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList<Exam>();
+        }
+
+        private void lbExams_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (lbExams.SelectedItem != null)
+                {
+                    if (MessageBox.Show("Вы точно хотите удалить выбранный вопрос?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        ExamDBEntities.GetContext().Exams.Remove(ExamDBEntities.GetContext().Exams.Find(((Exam)lbExams.SelectedItem).Id));
+                        ExamDBEntities.GetContext().SaveChanges();
+                        Update();
+                    }
+                }
+            }
         }
     }
 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="548.895" Activated="Window_Activated">
     <StackPanel>
-        <ListBox x:Name="lbExams" DisplayMemberPath="Name" SelectionChanged="lbExams_SelectionChanged"></ListBox>
+        <ListBox x:Name="lbExams" DisplayMemberPath="Name" SelectionChanged="lbExams_SelectionChanged" KeyDown="lbExams_KeyDown"></ListBox>
         <Button x:Name="createExam" Content="Создать экзамен" Click="createExam_Click"></Button>
     </StackPanel>
 </Window>

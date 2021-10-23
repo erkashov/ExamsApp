@@ -28,15 +28,15 @@ namespace ExamsApp
         {
             InitializeComponent();
             cur_ex = ex;
-            if (ex.Name != null)
-            {
-                Update();
-                start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
-                start.Visibility = Visibility.Visible;
-                tbName.Text = cur_ex.Name;
-                IsAdded = true;
-                IsStarted = ex.IsStarted;
-            }
+                if (ex.Name != null)
+                {
+                    Update();
+                    start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
+                    start.Visibility = Visibility.Visible;
+                    tbName.Text = cur_ex.Name;
+                    IsAdded = true;
+                    IsStarted = ex.IsStarted;
+                }
         }
 
 
@@ -106,6 +106,23 @@ namespace ExamsApp
         {
 
             this.Close();
+        }
+
+
+        private void lbQues_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (lbQues.SelectedItem != null)
+                {
+                    if(MessageBox.Show("Вы точно хотите удалить выбранный вопрос?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        ExamDBEntities.GetContext().Questions.Remove(ExamDBEntities.GetContext().Questions.Find(((Question)lbQues.SelectedItem).Id));
+                        ExamDBEntities.GetContext().SaveChanges();
+                        Update();
+                    }
+                }
+            }
         }
     }
 }
