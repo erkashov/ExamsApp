@@ -34,6 +34,12 @@ namespace ExamsApp
                 AdminWindow ad = new AdminWindow(user);
                 ad.Show();
             }
+            else if(user != null)
+            {
+                StudentWindow s = new StudentWindow(user);
+                s.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -26,7 +26,9 @@ namespace ExamsApp.Windows
             cur_user = u;
             Update();
         }
-
+        /// <summary>
+        /// Обновление списка экзаменов
+        /// </summary>
         public void Update()
         {
             lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.Where(p => p.IdUser == cur_user.Id).ToList();

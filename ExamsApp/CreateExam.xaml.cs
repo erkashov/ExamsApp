@@ -28,15 +28,15 @@ namespace ExamsApp
         {
             InitializeComponent();
             cur_ex = ex;
-                if (ex.Name != null)
-                {
-                    Update();
-                    start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
-                    start.Visibility = Visibility.Visible;
-                    tbName.Text = cur_ex.Name;
-                    IsAdded = true;
-                    IsStarted = ex.IsStarted;
-                }
+            if (ex.Name != null)
+            {
+                Update();
+                start.Content = ExamDBEntities.GetContext().Exams.Find(cur_ex.Id).Started;
+                start.Visibility = Visibility.Visible;
+                tbName.Text = cur_ex.Name;
+                IsAdded = true;
+                IsStarted = ex.IsStarted;
+            }
         }
 
 
