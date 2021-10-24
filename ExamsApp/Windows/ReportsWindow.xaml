@@ -1,0 +1,18 @@
+﻿<Window x:Class="ExamsApp.Windows.ReportsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamsApp.Windows"
+        mc:Ignorable="d"
+        Title="ReportsWindow" Height="202.817" Width="247.324">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="dg">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название экзамена" Binding="{Binding Exam.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Результат" Binding="{Binding Result}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+    </Grid>
+</Window>

@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:ExamsApp.Windows"
         mc:Ignorable="d"
         Title="ExamWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel x:Name="stP">
         <Button x:Name="buttonStart" Content="Начать экзамен" Click="buttonStart_Click" Height="50" Width="100"></Button>
-        
-    </Grid>
+        <StackPanel x:Name="stQues" Visibility="Hidden">
+        <TextBlock Text="Вопрос:"></TextBlock>
+        <TextBlock x:Name="tbQues" Text="{Binding Wording}"> </TextBlock>
+        <RadioButton GroupName="answ" Name="rb1"></RadioButton>
+        <RadioButton GroupName="answ" Name="rb2"></RadioButton>
+        <RadioButton GroupName="answ" Name="rb3"></RadioButton>
+        <RadioButton GroupName="answ" Name="rb4"></RadioButton>
+        <Button x:Name="netxQues" Content="Следующий вопрос" Click="netxQues_Click"></Button>
+        </StackPanel>
+    </StackPanel>
 </Window>

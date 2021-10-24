@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamsApp.Windows"
         mc:Ignorable="d"
-        Title="StudentWindow" Height="450" Width="800">
+        Title="StudentWindow" Height="309.53" Width="474.309">
     <StackPanel Margin="30">
+        <TextBlock Text="экзаменов нет" Visibility="Collapsed" x:Name="tbNot"></TextBlock>
         <ListBox x:Name="lbExams" DisplayMemberPath="Name" SelectionChanged="lbExams_SelectionChanged"></ListBox>
         <Button x:Name="buttonReport" Content="Посмотреть результаты" Click="buttonReport_Click"></Button>
     </StackPanel>

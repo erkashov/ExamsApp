@@ -30,15 +30,29 @@ namespace ExamsApp.Windows
         public void Update()
         {
             lbExams.ItemsSource = ExamDBEntities.GetContext().Exams.ToList();
+            if (lbExams.Items.Count == 0)
+            {
+                lbExams.Visibility = Visibility.Collapsed;
+                tbNot.Visibility = Visibility.Visible;
+            }
         }
 
         private void lbExams_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbExams.SelectedItem == null) return;
-            if (ExamDBEntities.GetContext().Exams.Find(((Exam)lbExams.SelectedItem).Id).IsStarted)
+            var ex = ExamDBEntities.GetContext().Exams.Find(((Exam)lbExams.SelectedItem).Id);
+            if (ex.IsStarted)
             {
-                ExamWindow w = new ExamWindow((Exam)lbExams.SelectedItem);
-                w.Show();
+                if (ExamDBEntities.GetContext().Reports.Where(p => p.IdUser == currrent_user.Id && p.IdExam == ex.Id).FirstOrDefault() != null)
+                {
+                    MessageBox.Show("Вы уже прошли данный экзамен");
+                }
+                else
+                {
+                    ExamWindow w = new ExamWindow(ex, currrent_user);
+                    w.Show();
+                }
+                
             }
             else
             {
@@ -50,7 +64,8 @@ namespace ExamsApp.Windows
 
         private void buttonReport_Click(object sender, RoutedEventArgs e)
         {
-
+            ReportsWindow r = new ReportsWindow(currrent_user);
+            r.Show();
         }
     }
 }
